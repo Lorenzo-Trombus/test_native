@@ -1,20 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Home from './src/components/HomeScreen';
+import Associato from './src/components/AssociatoScreen';
+import RicercatoriScreen from './src/components/RicercatoriScreen';
+import Professori from './src/components/ProfessoriScreen';
+import Corsi from './src/components/CorsiScreen';
+import OrdinariScreen from './src/components/OrdinariScreen';
+import { styles } from './src/components/styles'
+const Stack = createStackNavigator();
 
-export default function App() {
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Associato" component={Associato} />
+        <Stack.Screen name= "Ordinario" component= {OrdinariScreen}/>
+        <Stack.Screen name="Ricercatore" component={RicercatoriScreen} />
+        <Stack.Screen name="Professori" component={Professori} />
+        <Stack.Screen name="Corsi" component={Corsi} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
